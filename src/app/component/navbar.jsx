@@ -8,13 +8,6 @@ import { navLinks } from "./navlinks";
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
-    // const navLinks = [
-    //     { name: "Home", href: "/" },
-    //     { name: "Services", href: "/services" },
-    //     { name: "Fleet", href: "/fleet" },
-    //     { name: "About Us", href: "/about" },
-    //     { name: "Contact", href: "/contact" },
-    // ];
 
     return (
         <nav className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
@@ -40,12 +33,20 @@ export default function Navbar() {
                                 {link.name}
                             </Link>
                         ))}
-                        <Link
-                            href="/book"
-                            className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm"
-                        >
-                            Log in
-                        </Link>
+                        <div className="flex items-center gap-3">
+                            <Link
+                                href="/login"
+                                className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm"
+                            >
+                                Log in
+                            </Link>
+                            <Link
+                                href="/signup"
+                                className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm"
+                            >
+                                Sign up
+                            </Link>
+                        </div>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -75,13 +76,20 @@ export default function Navbar() {
                                 {link.name}
                             </Link>
                         ))}
-                        <div className="pt-2 px-3">
+                        <div className="pt-2 px-3 space-y-2">
                             <Link
-                                href="/book"
+                                href="/login"
                                 onClick={() => setIsOpen(false)}
                                 className="block text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
                             >
                                 Log in
+                            </Link>
+                            <Link
+                                href="/signup"
+                                onClick={() => setIsOpen(false)}
+                                className="block text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                            >
+                                Sign up
                             </Link>
                         </div>
                     </div>
