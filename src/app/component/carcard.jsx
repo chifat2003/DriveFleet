@@ -31,7 +31,7 @@ const CarCard = ({ car }) => {
             </div>
 
             {/* Action Button */}
-            <Link href={`/cars/${_id}`}>
+            <Link href={`/explore-cars/${_id}`}>
                 <Button className="bg-[#0066cc] text-white font-medium px-6 py-2 rounded-xl hover:bg-blue-700 transition-colors w-fit">
                     View Details
                 </Button>

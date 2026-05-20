@@ -18,10 +18,10 @@ const ExploreCars = async () => {
             <div className='max-w-7xl mx-auto bg-blue-50'>
                 <h2 className='text-3xl font-bold text-center pt-10 text-blue-600'>Available Cars</h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10 bg-blue-50">
 
-                    {cars.map(car => (
-                        <CarCard key={car._id} car={car} />
+                    
+                    {cars.map(car => (<CarCard key={car._id} car={car} />
                     ))
                     }
                 </div>
