@@ -1,3 +1,5 @@
+import { DeleteCar } from '@/app/component/deletemodal';
+import { ModalForm } from '@/app/component/modalform';
 import { Button, Card } from '@heroui/react';
 import React from 'react';
 
@@ -20,23 +22,31 @@ const CarDetailsPage = async ({ params }) => {
                     <img className='rounded-lg w-full' src={imageUrl} alt={`${carBrand} ${carModel}`} />
                 </div>
                 <Card className='p-5 bg-white rounded-lg shadow-sm border border-gray-100 lg:col-span-2'>
-                <div className='lg:col-span-2 space-y-6'>
-                    <h1 className='text-4xl font-semibold'>{carBrand} {carModel}</h1>
-                    <div>
-                        <p><span className='font-semibold'>Category:</span> {category}</p>
-                        <p><span className='font-semibold'>Model Year:</span> {modelYear}</p>
-                        <p><span className='font-semibold'>Pickup Location:</span> {pickupLocation}</p>
-                        <p><span className='font-semibold'>Price Per Day:</span> {price} TK</p>
-                    </div>
-                    <div className=''>
-                        <p className='text-2xl font-bold'>Description:</p>
-                        <p className=''> {description}</p>
-                    </div>
-                    <Button className="bg-[#0066cc] text-white font-medium px-6 py-2 rounded-xl hover:bg-blue-700 transition-colors w-full item-end">
-                        Book Now
-                    </Button>
+                    <div className='lg:col-span-2 space-y-6'>
+                        <h1 className='text-4xl font-semibold'>{carBrand} {carModel}</h1>
+                        <div>
+                            <p><span className='font-semibold'>Category:</span> {category}</p>
+                            <p><span className='font-semibold'>Model Year:</span> {modelYear}</p>
+                            <p><span className='font-semibold'>Pickup Location:</span> {pickupLocation}</p>
+                            <p><span className='font-semibold'>Price Per Day:</span> {price} TK</p>
+                        </div>
+                        <div className=''>
+                            <p className='text-2xl font-bold'>Description:</p>
+                            <p className=''> {description}</p>
+                        </div>
+                        <Button className="bg-[#0066cc] text-white font-medium px-6 py-2 rounded-xl hover:bg-blue-700 transition-colors w-full item-end">
+                            Book Now
+                        </Button>
+                        <div className='grid grid-cols-2 gap-2'>
+                            <ModalForm car = {car} />
+                            {/* <Button className="bg-red-500 text-white font-medium px-6 py-2 rounded-xl hover:bg-red-600 transition-colors w-full item-end">
+                                Delete
+                            </Button> */}
+                            <DeleteCar car={car} />
+                        </div>
 
-                </div>
+
+                    </div>
                 </Card>
 
 

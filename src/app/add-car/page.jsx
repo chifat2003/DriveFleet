@@ -2,9 +2,13 @@
 
 import { FieldError, Input, Label, TextField, Select, ListBox, TextArea, Button } from '@heroui/react';
 import React from 'react';
+import { useRouter } from 'next/navigation';
+
 
 const AddCarPage = () => {
 
+        const router = useRouter();
+    
     const onSubmit = async (e) => {
         e.preventDefault();
         const formdata = new FormData(e.currentTarget);
@@ -20,6 +24,7 @@ const AddCarPage = () => {
 
         const data = await res.json();
         console.log(data);
+        router.push('/explore-cars');
     }
 
 
