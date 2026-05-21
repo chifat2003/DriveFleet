@@ -84,6 +84,14 @@ export default function Navbar() {
                                             </div>
                                         </div>
                                         <Dropdown.Menu>
+
+                                                                                           <Dropdown.Item id="addCar" textValue="addCar">
+                                                    <div className="flex w-full items-center justify-between gap-2">
+                    
+                                                    <Link href="/add-car"><button> Add car</button></Link>
+                                                        
+                                                    </div>
+                                                </Dropdown.Item>
                                            
 
                                             <Dropdown.Item id="logout" textValue="Logout" variant="danger" onClick={handleSignOut}>
@@ -191,6 +199,13 @@ export default function Navbar() {
                                             </div>
                                             <Dropdown.Menu>
                                               
+                                               <Dropdown.Item id="addCar" textValue="addCar">
+                                                    <div className="flex w-full items-center justify-between gap-2">
+                    
+                                                    <Link href="/add-car"><button> Add car</button></Link>
+                                                        
+                                                    </div>
+                                                </Dropdown.Item>
 
                                                 <Dropdown.Item id="logout" textValue="Logout" variant="danger" onClick={handleSignOut}>
                                                     <div className="flex w-full items-center justify-between gap-2">
