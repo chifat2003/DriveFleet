@@ -13,7 +13,7 @@ const MyBookings = async () => {
     const user = session?.user
 
 
-    const res = await fetch(`http://localhost:5000/booking/${user?.id}`);
+    const res = await fetch(`https://drive-fleet-backend.vercel.app/booking/${user?.id}`);
     const bookings = await res.json();
 
     console.log(bookings)

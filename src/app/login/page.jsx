@@ -72,29 +72,6 @@ const LoginPage = () => {
 
                 <Card className="w-max-4xl mx-auto flex justify-center">
                     <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
-                        {/* <TextField
-                            isRequired
-                            name="name"
-                            type="text"
-                        >
-                            <Label>
-                                Name
-                            </Label>
-                            <Input placeholder="Enter your name"></Input>
-                            <FieldError />
-                        </TextField>
-
-                        <TextField
-
-                            name="image"
-                            type="url"
-                        >
-                            <Label>
-                                Profile Picture
-                            </Label>
-                            <Input placeholder="Add a image link"></Input>
-                            <FieldError />
-                        </TextField> */}
 
 
                         <TextField

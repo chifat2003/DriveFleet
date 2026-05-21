@@ -11,7 +11,7 @@ export function DeleteCar({ car }) {
     const router = useRouter();
     
     const handleDelete = async () => {
-        const res = await fetch(`http://localhost:5000/add-car/${car._id}`, {
+        const res = await fetch(`https://drive-fleet-backend.vercel.app/add-car/${car._id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

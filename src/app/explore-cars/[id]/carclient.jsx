@@ -45,7 +45,7 @@ const CarDetailsClient = ({ car }) => {
             bookingDate: new Date(bookingDate)
         }
         
-        const res = await fetch('http://localhost:5000/booking', {
+        const res = await fetch('https://drive-fleet-backend.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json',

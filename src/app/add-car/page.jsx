@@ -14,7 +14,7 @@ const AddCarPage = () => {
         const formdata = new FormData(e.currentTarget);
         const car = Object.fromEntries(formdata.entries());
 
-        const res = await fetch('http://localhost:5000/add-car', {
+        const res = await fetch('https://drive-fleet-backend.vercel.app/add-car', {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json',

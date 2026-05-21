@@ -11,7 +11,7 @@ export function DeleteBooking({ bookingId }) {
     // const router = useRouter();
 
     const handleDelete = async () => {
-        const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
+        const res = await fetch(`https://drive-fleet-backend.vercel.app/booking/${bookingId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

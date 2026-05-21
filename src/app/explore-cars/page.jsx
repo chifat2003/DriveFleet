@@ -7,7 +7,7 @@ import CarCard from '../component/carcard';
 
 const ExploreCars = async () => {
 
-    const res = await fetch('http://localhost:5000/add-car');
+    const res = await fetch('https://drive-fleet-backend.vercel.app/add-car');
     const cars = await res.json();
     console.log(cars);
 
