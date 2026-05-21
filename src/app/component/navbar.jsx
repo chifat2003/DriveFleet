@@ -1,12 +1,25 @@
 "use client";
 
+import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
+import { Avatar, Dropdown, Label } from "@heroui/react";
+
+import { authClient } from "@/lib/auth-client" // import the auth client
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Car } from "lucide-react"; // Using 'Car' icon as a placeholder for 'Drive'
+import { Menu, X, Car } from "lucide-react";
 import { navLinks } from "./navlinks";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+
+    const {
+        data: session,
+    } = authClient.useSession()
+
+    const user = session?.user
+
+
+    console.log(user)
 
 
     return (
@@ -34,18 +47,74 @@ export default function Navbar() {
                             </Link>
                         ))}
                         <div className="flex items-center gap-3">
-                            <Link
-                                href="/login"
-                                className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm"
-                            >
-                                Log in
-                            </Link>
-                            <Link
-                                href="/signup"
-                                className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm"
-                            >
-                                Sign up
-                            </Link>
+
+                            {user ? (
+                                // <CustomTrigger></CustomTrigger>
+                                <Dropdown>
+                                    <Dropdown.Trigger className="rounded-full">
+                                        <Avatar>
+                                            <Avatar.Image
+                                                alt={user?.name}
+                                                src={user?.image}
+                                            />
+                                            <Avatar.Fallback delayMs={600}>{user?.name}</Avatar.Fallback>
+                                        </Avatar>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Popover>
+                                        <div className="px-3 pt-3 pb-1">
+                                            <div className="flex items-center gap-2">
+                                                <Avatar size="sm">
+                                                    <Avatar.Image
+                                                        alt={user?.name}
+                                                        src={user?.image}
+                                                    />
+                                                    <Avatar.Fallback delayMs={600}>{user?.name}</Avatar.Fallback>
+                                                </Avatar>
+                                                <div className="flex flex-col gap-0">
+                                                    <p className="text-sm leading-5 font-medium">{user?.name}</p>
+                                                    <p className="text-xs leading-none text-muted">{user?.email}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item id="myAddedCars" textValue="myAddedCars">
+                                                <Label>My Added Cars</Label>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item id="profile" textValue="Profile">
+                                                <Label>Profile</Label>
+                                            </Dropdown.Item>
+
+                                            <Dropdown.Item id="logout" textValue="Logout" variant="danger">
+                                                <div className="flex w-full items-center justify-between gap-2">
+                                                    <Label>Log Out</Label>
+                                                    <ArrowRightFromSquare className="size-3.5 text-danger" />
+                                                </div>
+                                            </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown.Popover>
+                                </Dropdown>
+                            ) : (
+                                <>
+                                    <Link
+                                        href="/login"
+                                        className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm"
+                                    >
+                                        Log in
+                                    </Link>
+                                    <Link
+                                        href="/signup"
+                                        className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm"
+                                    >
+                                        Sign up
+                                    </Link>
+                                </>
+                            )}
+
+
+
+
+
+
                         </div>
                     </div>
 
@@ -77,20 +146,73 @@ export default function Navbar() {
                             </Link>
                         ))}
                         <div className="pt-2 px-3 space-y-2">
-                            <Link
-                                href="/login"
-                                onClick={() => setIsOpen(false)}
-                                className="block text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                            >
-                                Log in
-                            </Link>
-                            <Link
-                                href="/signup"
-                                onClick={() => setIsOpen(false)}
-                                className="block text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                            >
-                                Sign up
-                            </Link>
+
+
+                            {/* profile dropdown */}
+                            {user ? (
+                                <div className="flex justify-center">
+                                    {/* <CustomTrigger user = {user} className="text-center"></CustomTrigger> */}
+                                    <Dropdown>
+                                        <Dropdown.Trigger className="rounded-full">
+                                            <Avatar>
+                                                <Avatar.Image
+                                                    alt={user?.name}
+                                                    src={user?.image}
+                                                />
+                                                <Avatar.Fallback delayMs={600}>{user?.name}</Avatar.Fallback>
+                                            </Avatar>
+                                        </Dropdown.Trigger>
+                                        <Dropdown.Popover>
+                                            <div className="px-3 pt-3 pb-1">
+                                                <div className="flex items-center gap-2">
+                                                    <Avatar size="sm">
+                                                        <Avatar.Image
+                                                            alt={user?.name}
+                                                            src={user?.image}
+                                                        />
+                                                        <Avatar.Fallback delayMs={600}>{user?.name}</Avatar.Fallback>
+                                                    </Avatar>
+                                                    <div className="flex flex-col gap-0">
+                                                        <p className="text-sm leading-5 font-medium">{user?.name}</p>
+                                                        <p className="text-xs leading-none text-muted">{user?.email}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item id="myAddedCars" textValue="myAddedCars">
+                                                    <Label>My Added Cars</Label>
+                                                </Dropdown.Item>
+                                                <Dropdown.Item id="profile" textValue="Profile">
+                                                    <Label>Profile</Label>
+                                                </Dropdown.Item>
+
+                                                <Dropdown.Item id="logout" textValue="Logout" variant="danger">
+                                                    <div className="flex w-full items-center justify-between gap-2">
+                                                        <Label>Log Out</Label>
+                                                        <ArrowRightFromSquare className="size-3.5 text-danger" />
+                                                    </div>
+                                                </Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown.Popover>
+                                    </Dropdown>
+                                </div>
+
+                            ) : (
+                                <>
+                                    <Link
+                                        href="/login"
+                                        className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm"
+                                    >
+                                        Log in
+                                    </Link>
+                                    <Link
+                                        href="/signup"
+                                        className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm"
+                                    >
+                                        Sign up
+                                    </Link>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
