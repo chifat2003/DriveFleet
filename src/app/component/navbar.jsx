@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
-import { Avatar, Dropdown, Label } from "@heroui/react";
+import { Avatar, Dropdown, Label, Button } from "@heroui/react";
 
 import { authClient } from "@/lib/auth-client" // import the auth client
 import { useState } from "react";
@@ -18,8 +18,12 @@ export default function Navbar() {
 
     const user = session?.user
 
+    const handleSignOut = async () => {
+        await authClient.signOut();
+    }
 
-    console.log(user)
+
+    // console.log(user)
 
 
     return (
@@ -54,6 +58,7 @@ export default function Navbar() {
                                     <Dropdown.Trigger className="rounded-full">
                                         <Avatar>
                                             <Avatar.Image
+                                                referrerPolicy="no-referrer"
                                                 alt={user?.name}
                                                 src={user?.image}
                                             />
@@ -65,6 +70,8 @@ export default function Navbar() {
                                             <div className="flex items-center gap-2">
                                                 <Avatar size="sm">
                                                     <Avatar.Image
+                                                        referrerPolicy="no-referrer"
+
                                                         alt={user?.name}
                                                         src={user?.image}
                                                     />
@@ -77,19 +84,19 @@ export default function Navbar() {
                                             </div>
                                         </div>
                                         <Dropdown.Menu>
-                                            <Dropdown.Item id="myAddedCars" textValue="myAddedCars">
-                                                <Label>My Added Cars</Label>
-                                            </Dropdown.Item>
-                                            <Dropdown.Item id="profile" textValue="Profile">
-                                                <Label>Profile</Label>
-                                            </Dropdown.Item>
+                                           
 
-                                            <Dropdown.Item id="logout" textValue="Logout" variant="danger">
+                                            <Dropdown.Item id="logout" textValue="Logout" variant="danger" onClick={handleSignOut}>
                                                 <div className="flex w-full items-center justify-between gap-2">
-                                                    <Label>Log Out</Label>
+
+
+                                                    <button> Log Out</button>
+
+
                                                     <ArrowRightFromSquare className="size-3.5 text-danger" />
                                                 </div>
                                             </Dropdown.Item>
+
                                         </Dropdown.Menu>
                                     </Dropdown.Popover>
                                 </Dropdown>
@@ -156,6 +163,8 @@ export default function Navbar() {
                                         <Dropdown.Trigger className="rounded-full">
                                             <Avatar>
                                                 <Avatar.Image
+                                                    referrerPolicy="no-referrer"
+
                                                     alt={user?.name}
                                                     src={user?.image}
                                                 />
@@ -167,6 +176,8 @@ export default function Navbar() {
                                                 <div className="flex items-center gap-2">
                                                     <Avatar size="sm">
                                                         <Avatar.Image
+                                                            referrerPolicy="no-referrer"
+
                                                             alt={user?.name}
                                                             src={user?.image}
                                                         />
@@ -179,16 +190,15 @@ export default function Navbar() {
                                                 </div>
                                             </div>
                                             <Dropdown.Menu>
-                                                <Dropdown.Item id="myAddedCars" textValue="myAddedCars">
-                                                    <Label>My Added Cars</Label>
-                                                </Dropdown.Item>
-                                                <Dropdown.Item id="profile" textValue="Profile">
-                                                    <Label>Profile</Label>
-                                                </Dropdown.Item>
+                                              
 
-                                                <Dropdown.Item id="logout" textValue="Logout" variant="danger">
+                                                <Dropdown.Item id="logout" textValue="Logout" variant="danger" onClick={handleSignOut}>
                                                     <div className="flex w-full items-center justify-between gap-2">
-                                                        <Label>Log Out</Label>
+
+
+                                                        <button> Log Out</button>
+
+
                                                         <ArrowRightFromSquare className="size-3.5 text-danger" />
                                                     </div>
                                                 </Dropdown.Item>

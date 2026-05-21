@@ -22,26 +22,31 @@ const LoginPage = () => {
 
             // callbackURL: "/dashboard" // A URL to redirect to after the user verifies their email (optional)
         },
-        {
-        onRequest: (ctx) => {
-            
-        },
-        onSuccess: (ctx) => {
-            
-        },
-        onError: (ctx) => {
-            
-            alert(ctx.error.message);
-        },
-});
+            {
+                onRequest: (ctx) => {
+
+                },
+                onSuccess: (ctx) => {
+
+                },
+                onError: (ctx) => {
+
+                    alert(ctx.error.message);
+                },
+            });
 
         if (data) {
             redirect('/')
         }
-        
+
 
         console.log({ data, error });
 
+    }
+    const handleSignInWithGoogle = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
     }
 
 
@@ -142,6 +147,10 @@ const LoginPage = () => {
                             </Button>
                         </div>
                     </Form>
+                    <p className="text-xl text-center">Or</p>
+                    <div className="text-center">
+                        <Button onClick={handleSignInWithGoogle} className="w-full">Log in with Google</Button>
+                    </div>
                 </Card>
 
             </div>
